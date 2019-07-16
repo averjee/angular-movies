@@ -50,7 +50,7 @@ ul {
 
 .center {
     margin: 0 auto;
-    width: 269px; 
+    width: 147px; 
     text-align: center;
 }
 
@@ -67,13 +67,12 @@ mat-grid-tile-footer {
 
 #details {
     margin: 0 auto;
-    width: 200px;
+    width: 185px;
     text-align: center;
 }
 
 #search {
     margin-top: 20px;
-    margin-bottom: 20px;
 }
 
 .example-card {
@@ -92,6 +91,14 @@ button {
     margin-bottom: 13px !important;
 }
 
+mat-card {
+    width: 300px;
+}
+
+mat-card-header .mat-card-title {
+    font-size: 16px !important;
+}
+
 .mat-card-actions {
     margin-left: 43px !important;
 }
@@ -103,4 +110,14 @@ button {
     h3 {
         margin-top: 50px;
     }
+}
+
+.mat-card-image {
+    height: 355px;
+    width: 300px;
+}
+
+.mat-form-field-wrapper {
+    width: 245px;
+    margin-left: -47px !important;
 }

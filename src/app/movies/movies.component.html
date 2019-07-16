@@ -1,4 +1,6 @@
 
+<app-filter (filterChange)="changeSelection($event)"></app-filter>
+
 <div id="search" class="center">
   <mat-form-field class="center" hideRequiredMarker floatLabel='auto' appearance='outline'>
     <mat-label>Search Movie...</mat-label>
@@ -6,7 +8,7 @@
   </mat-form-field>
 </div>
 
-<mat-grid-list class="center" cols="3" rowHeight="800px"  gutterSize='50px'>
+<mat-grid-list class="center" cols="4" rowHeight="600px"  gutterSize='0px'>
   <ul *ngIf="movies">
     <li *ngFor="let movie of movies"> 
         <mat-grid-tile>

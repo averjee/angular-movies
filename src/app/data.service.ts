@@ -24,6 +24,51 @@ export class DataService {
     return this.http.get(this.tmdbURL + '/3/movie/' + movieId + '?api_key=' + this.apiKey);
   }
 
+  getMovieGenres(){
+    return this.http.get(this.tmdbURL + '/3/genre/movie/list' + '?api_key=' + this.apiKey + '&language=en-US');
+  }
+
+  getMovieDiscover(options){
+    console.log(options);
+    let param: string = '';
+    
+    if (options.with_genres){
+      param += '&with_genres=' + options.with_genres.join();
+    } 
+    
+    if (options.sort_by){
+      param += '&sort_by=' + options.sort_by;
+    } 
+    
+    if (options.primary_release_year){
+      param += '&primary_release_date.gte=' + options.primary_release_year + '&primary_release_date.lte=' + parseInt(options.primary_release_year + 1);
+    }
+
+    console.log(param);
+
+    return this.http.get(this.tmdbURL + '/3/discover/movie' + '?api_key=' + this.apiKey + '&language=en-US' + param);
+  }
+
+  sortByList(): Array<any> {
+    return [
+      { key: 'popularity.desc', value: 'Popularity Descending' },
+      { key: 'popularity.asc', value: 'Popularity Ascending' },
+      { key: 'vote_count.asc', value: 'Rating Ascending' },
+      { key: 'vote_count.desc', value: 'Rating Descending' },
+      { key: 'primary_release_date.desc', value: 'Release Date Descending' },
+      { key: 'primary_release_date.asc', value: 'Release Date Ascending' }
+    ];
+  }
+
+  getYears(): Array<number> {
+    const year = new Date().getFullYear();
+    const yearList = [];
+    for (let i = 0; i < 25; i++) {
+      yearList.push(year - i);
+    }
+    return yearList;
+  }
+
   //tv shows services
   getTVShows(value: string) {
     if (value) {
