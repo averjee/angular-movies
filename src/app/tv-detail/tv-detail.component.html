@@ -1,0 +1,29 @@
+<div class="main-container animated fadeIn fast">
+
+    <div class="row">
+
+        <div class="col-md-5">
+            <img src="https://image.tmdb.org/t/p/w500{{TV.poster_path}}" class="img-thumbnail img-fluid">
+        </div>
+
+
+        <div class="col-md-7">
+            <h3>Synopsis</h3>
+            <hr>
+            <p class="text-justify">
+                {{ TV.overview }}
+            </p>
+
+            <p>
+                Popularity: <span class="badge badge-primary">{{  TV.popularity | number:".0-0" }}/10</span>
+                <br>
+                Voted: <span class="badge badge-primary">{{ TV.vote_average }}</span>
+            </p>
+
+            <button (click)="goBack()" type="button" class="btn btn-outline-danger">
+                Go back
+            </button>
+
+        </div>
+    </div>
+</div>

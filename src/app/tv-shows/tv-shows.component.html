@@ -1,0 +1,30 @@
+
+<div id="search" class="center">
+    <mat-form-field class="center" hideRequiredMarker floatLabel='auto' appearance='outline'>
+      <mat-label>Search TV Show...</mat-label>
+      <input #input required matInput (keyup)="searchTVShows(input)">
+    </mat-form-field>
+  </div>
+  
+  <mat-grid-list class="center" cols="3" rowHeight="800px"  gutterSize='50px'>
+    <ul *ngIf="TVShows">
+      <li *ngFor="let TV of TVShows"> 
+          <mat-grid-tile>
+  
+              <mat-card class="example-card">
+                  <mat-card-header>
+                    <div mat-card-avatar class="example-header-image"></div>
+                    <mat-card-title class="center">{{ TV.name }}</mat-card-title>
+                  </mat-card-header>
+                  <img mat-card-image src="https://image.tmdb.org/t/p/w500{{TV.poster_path}}">
+                  <mat-card-actions class="center">
+                      <button id="details" class="center" (click)="TVSelected(TV)" mat-raised-button>TV Show Details</button>
+                  </mat-card-actions>
+                </mat-card>
+          </mat-grid-tile>
+      </li>
+    </ul>
+  </mat-grid-list>
+  
+  
+  

@@ -1,0 +1,106 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+
+body, html {
+    height: 100%;
+    margin: 0 auto;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+body {
+    font-family: 'Montserrat';
+    font-size: 18px;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 1.3em;
+    display: grid;
+    grid-template-columns: 30% auto;
+
+    a {
+        color: white;
+    }
+}
+
+section {
+    width: 80%;
+    margin: 0 auto;
+    padding: 2em;
+}
+
+button.mat-raised-button {
+    margin: 2px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.center {
+    margin: 0 auto;
+    width: 269px; 
+    text-align: center;
+}
+
+mat-grid-tile-footer {
+    background: none !important;
+}
+
+.title {
+    margin: 0 auto;
+    width: 200px; 
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#details {
+    margin: 0 auto;
+    width: 200px;
+    text-align: center;
+}
+
+#search {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.example-card {
+    max-width: 400px;
+}
+
+mat-grid-list {
+    width: 1500px !important;
+}
+
+.mat-card:not([class*=mat-elevation-z]) {
+    box-shadow: 0 2px 20px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12)
+}
+
+button {
+    margin-bottom: 13px !important;
+}
+
+.mat-card-actions {
+    margin-left: 43px !important;
+}
+
+.row {
+    margin-right: 400px;
+    // margin-top: 50px;
+
+    h3 {
+        margin-top: 50px;
+    }
+}

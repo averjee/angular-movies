@@ -1,0 +1,29 @@
+
+<div id="search" class="center">
+  <mat-form-field class="center" hideRequiredMarker floatLabel='auto' appearance='outline'>
+    <mat-label>Search Movie...</mat-label>
+    <input #input required matInput (keyup)="searchMovies(input)">
+  </mat-form-field>
+</div>
+
+<mat-grid-list class="center" cols="3" rowHeight="800px"  gutterSize='50px'>
+  <ul *ngIf="movies">
+    <li *ngFor="let movie of movies"> 
+        <mat-grid-tile>
+
+            <mat-card class="example-card">
+                <mat-card-header>
+                  <div mat-card-avatar class="example-header-image"></div>
+                  <mat-card-title class="center">{{ movie.title }}</mat-card-title>
+                </mat-card-header>
+                <img mat-card-image src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}">
+                <mat-card-actions class="center">
+                    <button id="details" class="center" (click)="movieSelected(movie)" mat-raised-button>Movie Details</button>
+                </mat-card-actions>
+              </mat-card>
+        </mat-grid-tile>
+    </li>
+  </ul>
+</mat-grid-list>
+
+
