@@ -15,9 +15,10 @@
             </p>
 
             <p>
-                Popularity: <span class="badge badge-primary">{{  movie.popularity | number:".0-0" }}/10</span>
+                User Rating: <span class="badge badge-primary">{{ movie.vote_average * 10 }}%</span>
                 <br>
-                Voted: <span class="badge badge-primary">{{ movie.vote_average }}</span>
+                Run time: <span class="badge badge-primary">{{  movie.runtime }} mins</span>
+                <br>
             </p>
 
             <button (click)="goBack()" type="button" class="btn btn-outline-danger">

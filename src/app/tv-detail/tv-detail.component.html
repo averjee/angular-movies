@@ -15,9 +15,11 @@
             </p>
 
             <p>
-                Popularity: <span class="badge badge-primary">{{  TV.popularity | number:".0-0" }}/10</span>
+                User Rating: <span class="badge badge-primary">{{  TV.vote_average * 10 }}%</span>
                 <br>
-                Voted: <span class="badge badge-primary">{{ TV.vote_average }}</span>
+                Seasons: <span class="badge badge-primary">{{ TV.number_of_seasons }}</span>
+                <br>
+                Episodes: <span class="badge badge-primary">{{ TV.number_of_episodes }}</span>
             </p>
 
             <button (click)="goBack()" type="button" class="btn btn-outline-danger">
