@@ -11,7 +11,6 @@ export class MoviesComponent implements OnInit {
 
   moviesData: any;
   movies: any;
-  genreData: any;
   title: string = "Movies";
 
   constructor(private moviedb: DataService, private router: Router) { }
@@ -44,13 +43,13 @@ export class MoviesComponent implements OnInit {
     this.router.navigate(["movie-detail", movieId]);
   }
 
+  //options is now passed from filter to movies which then filters the movie data
   changeSelection(options) {
     console.log(options);
 
     this.moviedb.getMovieDiscover(options).subscribe((data: any) => {
-      this.genreData = data;
-      //console.log(this.genreData);
-      this.movies = this.genreData.results;
+      this.moviesData = data;
+      this.movies = this.moviesData.results;
       console.log(this.movies);
     });
     
