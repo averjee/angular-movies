@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { DataService } from '../data.service';
 
 @Component({
@@ -7,20 +8,26 @@ import { DataService } from '../data.service';
   styleUrls: ['./filter.component.scss']
 })
 export class FilterComponent implements OnInit {
+  filterForm: FormGroup;
   @Output() filterChange = new EventEmitter<any>();
   options: any;
   yearsList: Number[];
   sortByList: any;
   genresList: any;
 
-  constructor(public moviedb: DataService) {
-    this.moviedb.getMovieGenres().subscribe(
-      (res: any) => (this.genresList = res.genres)
-    );
-    this.options = {};
-  }
+  constructor(public moviedb: DataService, private fb: FormBuilder) {}
 
   ngOnInit() {
+
+    //check to see if options is stored in localstorage already and then set it to localstorage
+    //otherwise set it to {}
+    if (JSON.parse(localStorage.getItem('options'))){
+      this.options = JSON.parse(localStorage.getItem('options'));
+      this.filterChange.emit(this.options);
+    }else{
+      this.options = {};
+    }
+
     this.yearsList = this.moviedb.getYears();
     this.sortByList = this.moviedb.sortByList();
 
@@ -32,6 +39,16 @@ export class FilterComponent implements OnInit {
     
     console.log("yearsList", this.yearsList);
     console.log("sortByList", this.sortByList);
+
+    //the yearCategory, sortCategory and genreCategory gets automatically stored into filterForm
+    //via this.options
+    this.filterForm = this.fb.group({
+      yearCategory: [null],
+      sortCategory: [null],
+      genreCategory: [null]
+		});
+
+    //this.filterForm.get('yearCategory').setValue(this.options.primary_release_year);
   }
 
   changeSelection() {
@@ -41,6 +58,16 @@ export class FilterComponent implements OnInit {
     //options is then emitted to parent movies html via (filterChange) event within movies.component.html
     this.filterChange.emit(this.options);
     console.log("this.options", this.options);
+
+    //store this.options into localstorage
+    localStorage.setItem('options', JSON.stringify(this.options));
+
+  }
+
+  clearFilters(){
+    this.options = {};
+    this.filterChange.emit(this.options);
+    localStorage.setItem('options', JSON.stringify(this.options));
   }
 
 }

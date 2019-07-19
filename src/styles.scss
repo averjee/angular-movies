@@ -42,6 +42,11 @@ button.mat-raised-button {
     margin: 2px;
 }
 
+button:focus, button:active:focus, button.active:focus {
+    outline: none !important;
+    outline-style: none !important;
+}
+
 ul {
     list-style-type: none;
     margin: 0;
@@ -118,7 +123,6 @@ mat-card-header .mat-card-title {
 }
 
 .mat-form-field-wrapper {
-    width: 175px;
     margin-left: -47px !important;
 }
 
