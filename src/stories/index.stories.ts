@@ -1,9 +1,5 @@
 import { storiesOf, moduleMetadata } from '@storybook/angular';
 import { action } from '@storybook/addon-actions';
-import { linkTo } from '@storybook/addon-links';
-import { HttpClientModule } from '@angular/common/http';
-import { AppRoutingModule } from '../app/app-routing.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {
@@ -19,14 +15,9 @@ import {
   button,
 } from '@storybook/addon-knobs';
 
-import { Welcome, Button } from '@storybook/angular/demo';
-import { MaterialModule } from '../app/material/material.module';
+import { Welcome } from '@storybook/angular/demo';
 import { MatToolbarModule, MatFormFieldModule, MatSelectModule, MatButtonModule, MatInputModule } from '@angular/material';
-import { FilterComponent } from '../app/filter/filter.component';
 import { NavComponent } from '../app/nav/nav.component';
-import { MoviesComponent } from '../app/movies/movies.component';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { DataService } from '../app/data.service';
 
 storiesOf('Welcome', module).add('to Storybook', () => ({
   component: Welcome,
