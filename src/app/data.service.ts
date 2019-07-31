@@ -1,5 +1,50 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+export abstract class ResultAPI{
+  page:number; 
+	total_results: number;
+	total_pages: number;
+}
+
+export class MovieDetailsResponse extends ResultAPI{
+  results: Array<MovieDetails>;
+}
+
+export class MovieDetails{
+  id:number;
+  title:string;
+  popularity:number;
+  video: boolean;
+  original_title: string;
+  genre_ids?: Array<number>;
+}
+
+export class MovieDetail extends MovieDetails{
+  vote_average:number;
+  runtime:number;
+  overview:string;
+}
+
+
+// {
+// 	"vote_count": 1160,
+// 	"id": 420818,
+// 	"video": false,
+// 	"vote_average": 7.2,
+// 	"title": "The Lion King",
+// 	"popularity": 425.026,
+// 	"poster_path": "\/dzBtMocZuJbjLOXvrl4zGYigDzh.jpg",
+// 	"original_language": "en",
+// 	"original_title": "The Lion King",
+// 	"genre_ids": [12, 16, 10751, 18, 28],
+// 	"backdrop_path": "\/1TUg5pO1VZ4B0Q1amk3OlXvlpXV.jpg",
+// 	"adult": false,
+// 	"overview": "Simba idolises his father, King Mufasa, and takes to heart his own royal destiny. But not everyone in the kingdom celebrates the new cub's arrival. Scar, Mufasa's brother—and former heir to the throne—has plans of his own. The battle for Pride Rock is ravaged with betrayal, tragedy and drama, ultimately resulting in Simba's exile. With help from a curious pair of newfound friends, Simba will have to figure out how to grow up and take back what is rightfully his.",
+// 	"release_date": "2019-07-12"
+// }
+
 
 @Injectable({
   providedIn: 'root'
@@ -12,16 +57,18 @@ export class DataService {
   constructor(private http: HttpClient) { }
 
   //movies services
-  getMovies(value: string) {
+  getMovies(value: string) : Observable<MovieDetailsResponse> {
     if (value) {
-      return this.http.get(this.tmdbURL + '/3/search/movie?api_key=' + this.apiKey + '&language=en-US&query=' + value);
+      return this.http.get<MovieDetailsResponse>(this.tmdbURL + '/3/search/movie?api_key=' + this.apiKey + '&language=en-US&query=' + value);
     } else {
-      return this.http.get(this.tmdbURL + '/3/movie/popular?api_key=' + this.apiKey + '&language=en-US&page=1');
+      return this.http.get<MovieDetailsResponse>(this.tmdbURL + '/3/movie/popular?api_key=' + this.apiKey + '&language=en-US&page=1');
     }
   }
 
-  getMovieDetail(movieId: number) {
-    return this.http.get(this.tmdbURL + '/3/movie/' + movieId + '?api_key=' + this.apiKey);
+  
+
+  getMovieDetail(movieId: number) : Observable<MovieDetail> {
+    return this.http.get<MovieDetail>(this.tmdbURL + '/3/movie/' + movieId + '?api_key=' + this.apiKey);
   }
 
   getMovieGenres(){

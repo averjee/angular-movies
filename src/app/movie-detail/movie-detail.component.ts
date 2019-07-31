@@ -29,6 +29,7 @@ export class MovieDetailComponent implements OnInit {
     this.moviedb.getMovieDetail(this.id).subscribe(data => {
       this.movie = data;
       console.log(this.movie)
+      console.log("data.overview", data.overview);
     });
 
   }

@@ -22,6 +22,7 @@ export class MoviesComponent implements OnInit {
       this.moviesData = data;
       this.movies = this.moviesData.results;
       console.log(this.movies);
+      console.log("data.results", data.results);
     });
   }
 
