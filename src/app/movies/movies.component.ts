@@ -40,6 +40,9 @@ export class MoviesComponent implements OnInit {
   movieSelected(item: any) {
     let movieId: number;
     movieId = item.id;
+
+    //send data
+    this.moviedb.sendData(this.moviesData);
     
     this.router.navigate(["movie-detail", movieId]);
   }

@@ -32,6 +32,9 @@ export class MovieDetailComponent implements OnInit {
       console.log("data.overview", data.overview);
     });
 
+    let getData = this.moviedb.getData();
+    console.log(getData);
+
   }
 
   goBack() {

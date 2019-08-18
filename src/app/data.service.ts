@@ -53,8 +53,19 @@ export class DataService {
 
   tmdbURL: string = 'https://api.themoviedb.org';
   apiKey: string = 'd0aea524bd07ed49cbc26dff63f357dd';
+  data: any;
 
   constructor(private http: HttpClient) { }
+
+  sendData(data: MovieDetailsResponse) {
+    this.data = data;
+    console.log(this.data);
+  }
+
+  getData(){
+    return this.data;
+  }
+
 
   //movies services
   getMovies(value: string) : Observable<MovieDetailsResponse> {
